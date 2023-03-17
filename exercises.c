@@ -13,9 +13,9 @@ Programe la función void swap(int *a, int *b), la cual
 intercambia los valores de las variables apuntadas por a y b.
 */
 void swap(int *a, int *b) {
-   int aux = *a; 
-   *a = *b;
-   *b = aux; 
+   int aux = (*a); 
+   (*a) = (*b);
+   (*b) = aux; 
 }
 
 /*
@@ -26,7 +26,7 @@ almacena en las variables apuntadas por max y min.
 */
 void arrayMaxMin(int *a, int n, int *max, int *min) {
    // a es un arreglo | n = total arreglos | max es maximo | min es minimo
-   aux = a[0];
+   int aux = a[0];
    (*max) = aux;
    (*min) = aux;
    for( int k = 0 ; k < n ; k++ ){
@@ -51,7 +51,6 @@ typedef struct {
 
 
 Persona* crearPersona(char nombre[], char rut[], int edad) {
-   Persona * p = NULL;
    Persona * p = (Persona *) malloc(sizeof(Persona));
    if (p == NULL) exit(EXIT_FAILURE);
    
@@ -59,6 +58,7 @@ Persona* crearPersona(char nombre[], char rut[], int edad) {
    for( int k = 0 ; k < 30 && nombre[k] != '\0' ; k++ ) {
       (*p).nombre[k] = nombre[k]; 
    }
+   // aqui perfectamente se podria haber usado strcpy
    for( int k = 0 ; k < 11 && rut[k]    != '\0' ; k++ ) {
       (*p).rut[k]    = rut[k]   ;
    } 
@@ -89,11 +89,11 @@ typedef struct {
 
 Vector * crearVector(int n) {
    Vector * vector = (Vector *) malloc(sizeof(Vector));
-   if(vector == NULL) exit("EXIT_FAILURE"); 
+   if(vector == NULL) exit(EXIT_FAILURE); 
    
    vector->datos = NULL; 
-   int  vector->datos = (int * ) calloc(n, sizeof(int));
-   if(  vector->datos == NULL) exit("EXIT_FAILURE");   
+   vector->datos = (int *) calloc(n, sizeof(int));
+   if( vector->datos == NULL ) exit(EXIT_FAILURE);   
    
    vector->capacidad = n ;
 
@@ -134,7 +134,7 @@ void sumaV(Vector * a, Vector * b, Vector * c) {
    
    c->datos = NULL;
    c->datos = (int *) realloc(c->datos, dim *sizeof(int));
-   if( c->datos == NULL) exit("EXIT_FAILURE");
+   if( c->datos == NULL) exit(EXIT_FAILURE);
 
    for( int k = 0 ; k < dim ; k++){
       if(a->datos[k]!='\0') c->datos[k] += a->datos[k] ; 
