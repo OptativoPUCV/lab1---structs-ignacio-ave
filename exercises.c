@@ -137,8 +137,8 @@ void sumaV(Vector * a, Vector * b, Vector * c) {
    if( c->datos == NULL) exit(EXIT_FAILURE);
 
    for( int k = 0 ; k < dim ; k++){
-      if(a->datos[k]!='\0') c->datos[k] += a->datos[k] ; 
-      if(b->datos[k]!='\0') c->datos[k] += b->datos[k] ;
+      if( (a->datos[k]!='\0') && (a->datos[k]!=0) )  c->datos[k] += a->datos[k] ; 
+      if((b->datos[k]!='\0')  && (b->datos[k]!=0) ) c->datos[k] += b->datos[k] ;
    }
 
 
