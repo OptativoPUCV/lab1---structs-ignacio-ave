@@ -34,8 +34,6 @@ void arrayMaxMin(int *a, int n, int *max, int *min) {
       if((*min) > a[k]) (*min) = a[k] ;
    }
 }
-
-
 /*
 Ejercicio 3.
 Considerando la estructura Persona, programe la función
@@ -55,16 +53,11 @@ Persona* crearPersona(char nombre[], char rut[], int edad) {
    if (p == NULL) exit(EXIT_FAILURE);
    
    //asignar valores de entrada a los campos de p
-   for( int k = 0 ; k < 30 && nombre[k] != '\0' ; k++ ) {
-      (*p).nombre[k] = nombre[k]; 
-   }
-   // aqui perfectamente se podria haber usado strcpy
-   for( int k = 0 ; k < 11 && rut[k]    != '\0' ; k++ ) {
-      (*p).rut[k]    = rut[k]   ;
-   } 
-
+   strcpy((*p).nombre, nombre);
+   strcpy((*p).rut, rut);
+   
    (*p).edad = edad ;
-    
+   
    return p;
 }
 
